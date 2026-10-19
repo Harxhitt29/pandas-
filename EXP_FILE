@@ -1,0 +1,83 @@
+import csv
+import os
+import matplotlib.pyplot as plt
+
+DATA_FILE = "data.csv"
+
+
+# Read data from CSV file
+def read_data(file_path: str):
+
+    x_values = []
+    y_values = []
+
+    with open(file_path, mode="r", newline="", encoding="utf-8") as file:
+
+        reader = csv.DictReader(file)
+
+        # Expected headers: x,y
+        for row in reader:
+
+            x_values.append(row["x"])
+            y_values.append(float(row["y"]))
+
+    return x_values, y_values
+
+
+# Create graph
+def create_visualization(x, y):
+
+    plt.figure(figsize=(8, 5))
+
+    plt.plot(
+        x,
+        y,
+        marker="o",
+        linestyle="-",
+        color="blue",
+        label="Data"
+    )
+
+    plt.title("Data Visualization from File")
+    plt.xlabel("X Values")
+    plt.ylabel("Y Values")
+
+    plt.grid(True)
+    plt.legend()
+
+    plt.tight_layout()
+    plt.show()
+
+
+# Main Program
+if __name__ == "__main__":
+
+    # Create sample CSV file if not exists
+    if not os.path.exists(DATA_FILE):
+
+        with open(
+            DATA_FILE,
+            mode="w",
+            newline="",
+            encoding="utf-8"
+        ) as file:
+
+            writer = csv.writer(file)
+
+            writer.writerow(["x", "y"])
+
+            writer.writerows([
+                ["Jan", 10],
+                ["Feb", 15],
+                ["Mar", 8],
+                ["Apr", 20],
+                ["May", 18],
+            ])
+
+        print(f"Sample '{DATA_FILE}' created.")
+        print("Run the program again to visualize data.")
+
+    # Read and visualize data
+    x_data, y_data = read_data(DATA_FILE)
+
+    create_visualization(x_data, y_data)
