@@ -123,7 +123,7 @@ else:
      print("I will have a cone")"""
 
 # num1 = int(input("pleae tell your first number "))
-num2 = int(input("pleae tell your second number "))
+#num2 = int(input("pleae tell your second number "))
 
 """if num1 > num2:
     print(f"{num1} is greater than {num2}")
@@ -1011,3 +1011,10 @@ else:
 #     if dict[i] == max:
 #         print(f"{i} occured {max} times and that is largest occurence")
 #         break
+
+numbers = [1, 2, 3, 4, 5]
+for i in numbers:
+    print(i)
+
+for i in range(100,43,-1):
+    print("hello")
