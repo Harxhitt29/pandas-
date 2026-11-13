@@ -36,9 +36,11 @@ print ("your bill amount is : ",bill_amount)
 file.write(name + ","+ str(c_a_no) + "," + str(bill_amount) + "\n")
 file.close()
 
+
 file = open("electricity_bill.csv","r")
 print(file.read())
 
 print("electricity_bill.csv")
 file.close()
 
+ 
